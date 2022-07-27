@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-ingreso',
   templateUrl: './ingreso.component.html',
@@ -41,7 +42,7 @@ export class IngresoComponent implements OnInit {
 
     this.cliente=this.fb.group({
       tipoDoc :['',Validators.required],
-      numDocumento :['',Validators.required]
+      numDocumento :['',[Validators.required,Validators.minLength(8),Validators.maxLength(11),Validators.pattern(/^[0-9]\d{6,10}$/)]]
 
     })
   }
