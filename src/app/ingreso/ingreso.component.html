@@ -1,21 +1,21 @@
 <div class="container-sm bg-light border col-5 p-2">
-    <form>
+    <form (ngSubmit)="consultarCliente()" [formGroup]="cliente">
         <fieldset>
             <legend>Ingrese datos de cliente</legend>
             <div class="mb-1 col-10">
                 <label class="form-label">Tipo Documento</label>
-                <select class="form-select">
-                    <option>CC</option>
+                <select class="form-select" formControlName="tipoDoc" placeholder="Tipo documento">
+                    <option>C</option>
                     <option>P</option>
                     <option>R</option>
                 </select>
             </div>
             <div class="mb-3 col-10">
                 <label class="form-label">Numero documento</label>
-                <input type="text" class="form-control" placeholder="Numero documento">
+                <input type="text" class="form-control" formControlName="numDocumento" placeholder="Numero documento">
             </div>
   
-            <button type="submit" disabled="true" class="btn btn-primary">Submit</button>
+            <button type="submit" click="consultarCliente()" class="btn btn-primary">Buscar</button>
         </fieldset>
     </form>
 </div>
