@@ -4,14 +4,15 @@
             <legend>Informacion Basica</legend>
             <div class="mb-1 col-10">
                 <label class="form-label">Nombre</label>
-                <input type="text" class="form-control" >
+                <input type="text" value="{{cliente.primerNombre}}" class="form-control" disabled>
             </div>
             <div class="mb-3 col-10">
                 <label class="form-label">Apellido</label>
-                <input type="text" class="form-control" >
+                <br>
+                <input type="text" value="{{cliente.primerApellido}}" class="form-control" disabled >
             </div>
 
-            <button type="info"  class="btn btn-info">Regresar</button>
+            <button type="button" routerLink="/ingreso" class="btn btn-info">Regresar</button>
         </fieldset>
     </form>
 </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { clienteDto } from '../model/clienteDto';
 
 @Component({
   selector: 'app-informacion-basica',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformacionBasicaComponent implements OnInit {
 
-  constructor() { }
+  cliente!: clienteDto;
+  constructor(private activatedRoute:ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => {
+      });
+   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.cliente=JSON.parse(params['cliente']);
+      });
+
+
   }
+
+  
 
 }

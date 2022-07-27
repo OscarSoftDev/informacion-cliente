@@ -10,12 +10,15 @@
                     <option>R</option>
                 </select>
             </div>
-            <div class="mb-3 col-10">
-                <label class="form-label">Numero documento</label>
-                <input type="text" class="form-control" formControlName="numDocumento" placeholder="Numero documento">
+
+            <label class="form-label">Numero documento</label>
+            <div class="mb-3 col-10 form-floating">
+                <input type="text" class="form-control"  id="floatingInput" formControlName="numDocumento" placeholder="Numero documento">
+                <label for="floatingInput">Numero documento</label>
             </div>
   
-            <button type="submit" click="consultarCliente()" class="btn btn-primary">Buscar</button>
+            <button type="submit"  click="consultarCliente()"  [disabled]="!this.cliente.valid" class="btn btn-primary">Buscar</button>
+            <p>Valores correctos:  C  | 23445322</p>
         </fieldset>
     </form>
 </div>

@@ -5,12 +5,13 @@ import { IngresoComponent } from './ingreso/ingreso.component';
 
 const routes: Routes = [
   { path: 'ingreso', component: IngresoComponent},
-  { path: 'informacion-basica', component: InformacionBasicaComponent},
-  { path: '**', pathMatch: 'full', redirectTo: 'ingreso'}
+  { path: 'informacion/:cliente', component: InformacionBasicaComponent},
+ // { path: '**', pathMatch: 'full', redirectTo: 'ingreso'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+//,{useHash:true}

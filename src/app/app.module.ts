@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IngresoComponent } from './ingreso/ingreso.component';
 import { InformacionBasicaComponent } from './informacion-basica/informacion-basica.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule
 
   ],
   providers: [],

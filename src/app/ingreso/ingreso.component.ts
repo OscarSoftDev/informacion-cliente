@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { clienteDto } from '../model/clienteDto';
 import { ServiceService } from '../service/service.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 
@@ -15,17 +16,20 @@ export class IngresoComponent implements OnInit {
   cliente: FormGroup ;
   tipoDoc:string="";
   numDoc:number=0;
+  localCliente!: clienteDto;
   constructor(
     private serviceCliente:ServiceService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    public router: Router
     ) {
     this.cliente= new FormGroup({});
+    
   }
 
   ngOnInit(): void {
     this.cliente = new FormGroup({
-      numDocumento: new FormControl("0"),
-      tipoDoc: new FormControl('NA'), 
+      numDocumento: new FormControl(),
+      tipoDoc: new FormControl(), 
       primerNombre: new FormControl(''),
       segundoNombre: new FormControl(''),
       primerApellido: new FormControl(''),
@@ -35,13 +39,20 @@ export class IngresoComponent implements OnInit {
       ciudadResidencia:new FormControl(''),
     });
 
-  
+    this.cliente=this.fb.group({
+      tipoDoc :['',Validators.required],
+      numDocumento :['',Validators.required]
+
+    })
   }
   public consultarCliente(){
+    console.log(this.cliente);
     this.tipoDoc=this.cliente.controls['tipoDoc'].value;
     this.numDoc=this.cliente.controls['numDocumento'].value;
     this.serviceCliente.getCliente(this.tipoDoc,this.numDoc).subscribe({next:bcliente => {
-      console.log(bcliente);
+      //console.log(bcliente);
+      this.localCliente=bcliente;
+      this.router.navigate(['/informacion',JSON.stringify(this.localCliente)]);
       Swal.fire({
         icon: 'success',
         title: 'Cliente encontrado',
@@ -51,11 +62,14 @@ export class IngresoComponent implements OnInit {
         icon: 'error',
         title: 'No se encontro cliente',
       });
+      this.limpiar();
     }
   });
-
+  
   }
 
- 
+ limpiar() {
+    this.cliente.reset();
+}
 
 }
