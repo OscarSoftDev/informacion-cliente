@@ -29,15 +29,6 @@ export class IngresoComponent implements OnInit {
 
   ngOnInit(): void {
     this.cliente = new FormGroup({
-      numDocumento: new FormControl(),
-      tipoDoc: new FormControl(), 
-      primerNombre: new FormControl(''),
-      segundoNombre: new FormControl(''),
-      primerApellido: new FormControl(''),
-      segundoApellido: new FormControl(''),
-      telefono: new FormControl(''),
-      direccion: new FormControl(''),
-      ciudadResidencia:new FormControl(''),
     });
 
     this.cliente=this.fb.group({
